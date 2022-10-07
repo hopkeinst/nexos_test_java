@@ -30,7 +30,8 @@ COMMENT ON COLUMN nexos_inv_automotriz.user_cargos.id_user_elimina IS 'ID del us
 -- Tabla que almacenará los empleados / usuarios del sistema de inventarios
 CREATE TABLE nexos_inv_automotriz.users (
     id                  int     primary key not null,
-    nombre              varchar(100)        not null,
+    nombres             varchar(100)        not null,
+    apellidos           varchar(100)        not null,
     fecha_nacimiento    date                not null,
     id_cargo            int                 not null,
     fecha_ingreso       date                not null,
@@ -43,7 +44,8 @@ CREATE TABLE nexos_inv_automotriz.users (
 );
 -- Comentarios tabla usuarios
 COMMENT ON TABLE nexos_inv_automotriz.users IS 'Tabla que contiene los usuarios / empleados que usan el sistema de inventario';
-COMMENT ON COLUMN nexos_inv_automotriz.users.nombre IS 'Nombre del empleado';
+COMMENT ON COLUMN nexos_inv_automotriz.users.nombres IS 'Nombres, primer segundo o más del empleado';
+COMMENT ON COLUMN nexos_inv_automotriz.users.apellidos IS 'Apellidos, primero segundo o más del empleado';
 COMMENT ON COLUMN nexos_inv_automotriz.users.fecha_nacimiento IS 'Fecha de nacimiento del empleado, para calcular su edad';
 COMMENT ON COLUMN nexos_inv_automotriz.users.id_cargo IS 'ID del cargo que tiene el usuario';
 COMMENT ON COLUMN nexos_inv_automotriz.users.fecha_ingreso IS 'Fecha en que ingresa el usuario a la empresa';
