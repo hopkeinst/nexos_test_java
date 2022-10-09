@@ -8,7 +8,7 @@ CREATE SCHEMA nexos_inv_automotriz;
 
 -- Tabla que almacenará los cargos de los empleados / usuarios del sistema de inventarios
 CREATE TABLE nexos_inv_automotriz.user_cargos (
-    id                  int     primary key not null,
+    id                  serial  primary key not null,
     nombre              varchar(20)         not null,
     fecha_creacion      date                not null,
     id_user_crea        int                 not null,
@@ -29,7 +29,7 @@ COMMENT ON COLUMN nexos_inv_automotriz.user_cargos.id_user_elimina IS 'ID del us
 
 -- Tabla que almacenará los empleados / usuarios del sistema de inventarios
 CREATE TABLE nexos_inv_automotriz.users (
-    id                  int     primary key not null,
+    id                  serial  primary key not null,
     nombres             varchar(100)        not null,
     apellidos           varchar(100)        not null,
     fecha_nacimiento    date                not null,
@@ -58,7 +58,7 @@ COMMENT ON COLUMN nexos_inv_automotriz.users.id_user_elimina IS 'ID del usuario 
 
 -- Tabla que almacenará los productos de la empresa
 CREATE TABLE nexos_inv_automotriz.products (
-    id                  int     primary key not null,
+    id                  serial  primary key not null,
     nombre              varchar(50)         not null,
     cantidad            int                 not null,
     fecha_ingreso       date                not null,
@@ -80,6 +80,35 @@ COMMENT ON COLUMN nexos_inv_automotriz.products.fecha_edicion IS 'Fecha en que s
 COMMENT ON COLUMN nexos_inv_automotriz.products.id_user_edita IS 'ID del usuario que edita el registro del producto en el sistema / base de datos';
 COMMENT ON COLUMN nexos_inv_automotriz.products.fecha_eliminacion IS 'Fecha en que se da eliminar al producto; esto para no eliminarlo realmente sino conservar una trazabilidad y estado de activo/inactivo';
 COMMENT ON COLUMN nexos_inv_automotriz.products.id_user_elimina IS 'ID del usuario que elimina el producto';
+
+-- Ingresar datos iniciales
+-- Insertando usuarios
+INSERT INTO nexos_inv_automotriz.users
+    (id, nombres, apellidos, fecha_nacimiento, id_cargo, fecha_ingreso, fecha_creacion,
+     id_user_crea, fecha_edicion, id_user_edita, fecha_eliminacion, id_user_elimina)
+VALUES (1, 'Jorge Saul', 'Castillo Jaimes', '1993-02-04', 1, '2020-01-01', '2022-10-06', 1, NULL, NULL, NULL, NULL);
+INSERT INTO nexos_inv_automotriz.users
+    (id, nombres, apellidos, fecha_nacimiento, id_cargo, fecha_ingreso, fecha_creacion,
+     id_user_crea, fecha_edicion, id_user_edita, fecha_eliminacion, id_user_elimina)
+VALUES (2, 'Ana', 'Carrillo', '1987-10-24', 2, '2015-03-19', '2022-10-06', 1, NULL, NULL, NULL, NULL);
+INSERT INTO nexos_inv_automotriz.users
+    (id, nombres, apellidos, fecha_nacimiento, id_cargo, fecha_ingreso, fecha_creacion,
+     id_user_crea, fecha_edicion, id_user_edita, fecha_eliminacion, id_user_elimina)
+VALUES (3, 'Sofía', 'Vargas', '1993-09-15', 3, '2018-08-12', '2022-10-06', 1, NULL, NULL, NULL, NULL);
+-- Insertando cargos
+INSERT INTO nexos_inv_automotriz.user_cargos
+(id, nombre, fecha_creacion, id_user_crea, fecha_edicion, id_user_edita, fecha_eliminacion, id_user_elimina)
+values (1, 'Administrador', '2022-10-06', 1, NULL, NULL, NULL, NULL);
+INSERT INTO nexos_inv_automotriz.user_cargos
+(id, nombre, fecha_creacion, id_user_crea, fecha_edicion, id_user_edita, fecha_eliminacion, id_user_elimina)
+values (2, 'Asesor Ventas', '2022-10-06', 1, NULL, NULL, NULL, NULL);
+INSERT INTO nexos_inv_automotriz.user_cargos
+(id, nombre, fecha_creacion, id_user_crea, fecha_edicion, id_user_edita, fecha_eliminacion, id_user_elimina)
+values (3, 'Soporte', '2022-10-06', 1, NULL, NULL, NULL, NULL);
+
+-- Reinicio de los números de los seriales / scuencias en las tablas ingresadas los datos manualmente
+ALTER SEQUENCE nexos_inv_automotriz.users_id_seq RESTART WITH 4;
+ALTER SEQUENCE nexos_inv_automotriz.user_cargos_id_seq RESTART WITH 4;
 
 -- Creación de las relaciones
 -- Relación de usuarios con sus cargos
@@ -141,4 +170,3 @@ ALTER TABLE nexos_inv_automotriz.products
 ADD CONSTRAINT fk_prod_user_elimina
 FOREIGN KEY(id_user_elimina)
 REFERENCES nexos_inv_automotriz.users(id);
-
