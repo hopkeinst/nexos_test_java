@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class CargoService {
 
     private static final Logger LOGGER = LogManager.getLogger(CargoService.class);
+    @Autowired
     private CargoRepository iCargoRepository;
 
     public List<CargoDTO> listarCargos() {
@@ -42,7 +43,7 @@ public class CargoService {
             inputCargoDTO.setNombre("No se ingresó Usuario que crea el cargo");
             return inputCargoDTO;
         }
-        if (existeNombre(inputCargoDTO.getNombre())) {
+        if (existeNombre(inputCargoDTO.getNombre(), (long) -1)) {
             inputCargoDTO.setId((long) -1);
             inputCargoDTO.setNombre("No se puede crear cargo porque existe otro con igual nombre");
             return inputCargoDTO;
@@ -62,7 +63,7 @@ public class CargoService {
             inputCargoDTO.setNombre("No se ingresó Usuario que edita el cargo");
             return inputCargoDTO;
         }
-        if (existeNombre(inputCargoDTO.getNombre())) {
+        if (existeNombre(inputCargoDTO.getNombre(), inputCargoDTO.getId())) {
             inputCargoDTO.setId((long) -1);
             inputCargoDTO.setNombre("No se puede actualizar cargo porque existe otro con igual nombre");
             return inputCargoDTO;
@@ -104,17 +105,19 @@ public class CargoService {
     }
 
     // Métodos privados
-    private Boolean existeNombre(String nombre) {
-        List<String> nombres = iCargoRepository.findNameEnabled(nombre);
+    private Boolean existeNombre(String nombre, Long id) {
+        List<String> nombres = iCargoRepository.findNameEnabled(nombre, id);
         if((nombres.isEmpty()) || (nombres == null)) {
             return false;
         }
         return true;
     }
 
+    /*
     @Autowired
-    public void setiCargosRepository(CargoRepository cr) {
+    public void setiCargoRepository(CargoRepository cr) {
         this.iCargoRepository = cr;
     }
+     */
 
 }

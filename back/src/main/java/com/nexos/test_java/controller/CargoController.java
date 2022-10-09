@@ -14,7 +14,6 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/cargos")
@@ -49,7 +48,7 @@ public class CargoController {
     public ResponseEntity<CargoDTO> crearCargo(@Valid @RequestBody CargoDTO inputCargoDTO){
         CargoDTO cargoDTO = objCargoService.crearCargo(inputCargoDTO);
         if(cargoDTO.getId() == -1) {
-            return new ResponseEntity<>(cargoDTO, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(cargoDTO, HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(cargoDTO, HttpStatus.CREATED);
     }
@@ -58,7 +57,7 @@ public class CargoController {
     public ResponseEntity<CargoDTO> actualizaCargo(@Valid @RequestBody CargoDTO inputCargoDTO) {
         CargoDTO cargoDTO = objCargoService.actualizaCargo(inputCargoDTO);
         if(cargoDTO.getId() == -1) {
-            return new ResponseEntity<>(cargoDTO, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(cargoDTO, HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(cargoDTO, HttpStatus.CREATED);
     }
@@ -68,7 +67,7 @@ public class CargoController {
                                                   @RequestParam(name = "usuario") Long idUsuario) {
         CargoDTO cargoDTO = objCargoService.eliminarCargo(idCargo, idUsuario);
         if(cargoDTO.getId() == -1) {
-            return new ResponseEntity<>(cargoDTO, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(cargoDTO, HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(cargoDTO, HttpStatus.OK);
     }

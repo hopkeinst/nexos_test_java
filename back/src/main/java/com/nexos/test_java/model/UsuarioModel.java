@@ -53,7 +53,7 @@ public class UsuarioModel implements Serializable {
     private Long idUserElimina;
 
     // Los datos de las llaves foraneas
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "id_cargo", insertable = false, updatable = false)
     private CargoModel cargo;
 

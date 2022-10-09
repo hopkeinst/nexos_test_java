@@ -18,12 +18,13 @@ public interface CargoRepository extends JpaRepository<CargoModel, Long> {
 
     @Query(value = "SELECT cm FROM CargoModel cm " +
             "WHERE cm.fechaEliminacion IS null AND cm.id = :inId")
-    CargoModel findIdEnabled(@Param("inId") Long inId);
+    CargoModel findIdEnabled(Long inId);
 
     @Query(value = "SELECT cm.nombre FROM CargoModel cm " +
             "WHERE cm.fechaEliminacion IS null AND " +
+            "cm.id != :idId AND " +
             "UPPER(TRIM(TRANSLATE(:inName, 'áéíóúÁÉÍÓÚ', 'aeiouAEIOU'))) = " +
-            "UPPER(TRIM(TRANSLATE(cm.nombre, 'áéíóúÁÉÍÓÚ', 'aeiouAEIOU')))" +
-            "ORDER BY cm.id")
-    List<String> findNameEnabled(@Param("inName") String inName);
+            "UPPER(TRIM(TRANSLATE(cm.nombre, 'áéíóúÁÉÍÓÚ', 'aeiouAEIOU'))) " +
+            "ORDER BY cm.nombre")
+    List<String> findNameEnabled(String inName, Long idId);
 }

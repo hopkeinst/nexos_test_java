@@ -1,18 +1,18 @@
 # Prueba de Conocimiento Desarrollador Java
 
-Este repostorio contiene el desarrollo de la prueba técnica de conocimiento para desarrollador Java de la empresa Nexos.
+Este repositorio contiene el desarrollo de la prueba técnica de conocimiento para desarrollador Java de la empresa Nexos.
 
 El repositorio contiene:
 
-- [Presentación de la prueba](#prueba)
-- [Base de datos](#base-datos)
-- [Desarrollo Backend](#backend)
-- [Desarrollo Frontend](#frontend)
-- [Evidencias del desarrollo final](#evidencias)
+- [Presentación de la prueba](#presentaci%C3%B3n-de-la-prueba)
+- [Base de datos](#base-de-datos)
+- [Desarrollo Backend](#desarrollo-backend)
+- [Desarrollo Frontend](#desarrollo-frontend)
+- [Evidencias del desarrollo final](#evidencias-del-desarrollo)
 
 <hr>
 
-### Presentación de la prueba <a id="prueba"></a>
+### Presentación de la prueba
 
 La prueba técnica consiste en la siguiente propuesta:
 
@@ -53,7 +53,7 @@ Se evaluarán los siguientes conceptos:
 - Normalización de base de datos
 
 
-### Base de datos <a id="base-datos"></a>
+### Base de datos
 
 Como lo menciona la propuesta de la prueba técnica, es necesario que la base de datos esté en __PostgreSQL__ se realiza en esta.
 
@@ -71,12 +71,12 @@ También, en la carpeta [data_base](/data_base) se puede encontrar el diagrama r
 [![Diagrama relacional](/data_base/postgres%20-%20nexos_inv_automotriz.png)](https://github.com/hopkeinst/nexos_test_java/blob/main/data_base/postgres%20-%20nexos_inv_automotriz.png)
 
 
-### Desarrollo Backend <a id="backend"></a>
+### Desarrollo Backend
 
 
-### Desarrollo Frontend <a id="frontend"></a>
+### Desarrollo Frontend
 
 
-### Evidencias del Desarrollo <a id="evidencias"></a>
+### Evidencias del Desarrollo
 
 

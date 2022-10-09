@@ -43,15 +43,15 @@ public class CargoModel implements Serializable {
     private Long idUsuarioElimina;
 
     // Los datos de las llaves foráneas
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "id_user_crea", insertable = false, updatable = false)
     private UsuarioModel usuarioCreaCargo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "id_user_edita", insertable = false, updatable = false)
     private UsuarioModel usuarioEditaCargo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "id_user_elimina", insertable = false, updatable = false)
     private UsuarioModel usuarioEliminaCargo;
 
